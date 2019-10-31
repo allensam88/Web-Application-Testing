@@ -7,12 +7,34 @@ const Dashboard = () => {
 
     const handleStrike = () => {
         let newCount = strikeCount;
-        setStrikeCount(newCount+=1);
+        if (strikeCount < 3) {
+            setStrikeCount(newCount+=1)
+         } else {
+            setStrikeCount(0);
+         };
     }
 
     const handleBall = () => {
         let newCount = ballCount;
-        setBallCount(newCount+=1);
+        if (ballCount < 4) {
+            setBallCount(newCount+=1);
+        } else {
+            setBallCount(0);
+        }
+    }
+
+    const handleFoul = () => {
+        let newCount = strikeCount;
+        if (strikeCount < 2) {
+            setStrikeCount(newCount+=1);
+        } else {
+            setStrikeCount(newCount);
+        }
+    }
+
+    const handleHit = () => {
+        setStrikeCount(0);
+        setBallCount(0);
     }
 
     return (
@@ -20,8 +42,8 @@ const Dashboard = () => {
             <Display strikeCount={strikeCount} ballCount={ballCount}/>
             <button onClick={handleStrike}>Strike</button>
             <button onClick={handleBall}>Ball</button>
-            <button>Foul</button>
-            <button>Hit</button>
+            <button onClick={handleFoul}>Foul</button>
+            <button onClick={handleHit}>Hit</button>
         </div>
     )
 }
