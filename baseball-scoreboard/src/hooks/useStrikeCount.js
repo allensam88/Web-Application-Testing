@@ -1,12 +1,20 @@
-import { useEffect } from 'react';
-import { useLocalStorage } from './useLocalStorage';
+import { useState, useEffect } from 'react';
+// import { useLocalStorage } from './useLocalStorage';
 
 export const useStrikeCount = () => {
-    const [strikeCount, setStrikeCount] = useLocalStorage('strikeCount', 0);
+    const [strikeCount, setStrikeCount] = useState(0);
     
     useEffect(() => {
-        
-      }, [strikeCount]);
+      const setValue = () => {
+        if (strikeCount < 3) {
+            setStrikeCount(strikeCount + 1)
+        } else {
+            setStrikeCount(0);
+        };
+      }
+    }, [strikeCount]);
+
+
     
-    return [strikeCount, setStrikeCount]
+    return [strikeCount, setValue]
 }

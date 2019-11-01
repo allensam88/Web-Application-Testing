@@ -4,7 +4,7 @@ const Header = () => {
 
     return (
         <div>
-            <h1>Baseball Scoreboard</h1>
+            <h1>Baseball Pitch Count</h1>
         </div>
     )
 }

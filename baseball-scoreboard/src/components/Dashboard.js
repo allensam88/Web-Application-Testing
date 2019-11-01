@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import { useStrikeCount } from '../hooks/useStrikeCount';
 import Display from './Display';
 
 const Dashboard = () => {
@@ -6,29 +7,24 @@ const Dashboard = () => {
     const [ballCount, setBallCount] = useState(0);
 
     const handleStrike = () => {
-        let newCount = strikeCount;
         if (strikeCount < 3) {
-            setStrikeCount(newCount+=1)
+            setStrikeCount(strikeCount + 1)
          } else {
             setStrikeCount(0);
          };
     }
 
     const handleBall = () => {
-        let newCount = ballCount;
         if (ballCount < 4) {
-            setBallCount(newCount+=1);
+            setBallCount(ballCount + 1);
         } else {
             setBallCount(0);
         }
     }
 
     const handleFoul = () => {
-        let newCount = strikeCount;
         if (strikeCount < 2) {
-            setStrikeCount(newCount+=1);
-        } else {
-            setStrikeCount(newCount);
+            setStrikeCount(strikeCount + 1);
         }
     }
 
@@ -40,10 +36,10 @@ const Dashboard = () => {
     return (
         <div>
             <Display strikeCount={strikeCount} ballCount={ballCount}/>
-            <button onClick={handleStrike}>Strike</button>
-            <button onClick={handleBall}>Ball</button>
-            <button onClick={handleFoul}>Foul</button>
-            <button onClick={handleHit}>Hit</button>
+            <button onClick={handleStrike} data-testid='strike_btn'>Strike</button>
+            <button onClick={handleBall} data-testid='ball_btn'>Ball</button>
+            <button onClick={handleFoul} data-testid='foul_btn'>Foul</button>
+            <button onClick={handleHit} data-testid='hit_btn'>Hit</button>
         </div>
     )
 }
